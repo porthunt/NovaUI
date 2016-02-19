@@ -17,4 +17,4 @@ js.back();
 
 ####Special Thanks
 
-Logo stack icon made by [Freepik] (http://www.freepik.com) from [http://www.flaticon.com] (www.flaticon.com) is licensed by [CC 3.0 BY] (http://creativecommons.org/licenses/by/3.0/).
+**Logo stack icon** - Icons made by [Freepik] (http://www.freepik.com) from [http://www.flaticon.com] (www.flaticon.com) is licensed by [CC 3.0 BY] (http://creativecommons.org/licenses/by/3.0/).
