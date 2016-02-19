@@ -15,4 +15,6 @@ js.back();
 
 ![alt tag](https://s3-us-west-2.amazonaws.com/jstackui/next.gif "Cursor clicking on arrow and the panel changes from 1 through 5.")
 
+####Special Thanks
+
 Logo stack icon made by [Freepik] (http://www.freepik.com) from [http://www.flaticon.com] (www.flaticon.com) is licensed by [CC 3.0 BY] (http://creativecommons.org/licenses/by/3.0/).
