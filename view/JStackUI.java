@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import jstackui.controller.JStackCore;
 import jstackui.exceptions.UndefinedPanelException;
+import jstackui.model.CSS;
 
 /**
  * This class is the main class of the library. It is responsible to interact
@@ -22,10 +23,11 @@ import jstackui.exceptions.UndefinedPanelException;
 @SuppressWarnings("serial")
 public class JStackUI extends JFrame {
 
-	JPanel corePanel;
-	JStackCore jcore;
-	int WIDTH_DEFAULT = 900;
-	int HEIGHT_DEFAULT = 600;
+	private JPanel corePanel;
+	private JStackCore jcore;
+	private CSS css;
+	public int WIDTH_DEFAULT = 900;
+	public int HEIGHT_DEFAULT = 600;
 
 	/**
 	 * Creates a frame and an empty JPanel as the first item of the UIStack
@@ -106,6 +108,7 @@ public class JStackUI extends JFrame {
 
 	private void initialize() {
 		jcore = new JStackCore(corePanel);
+		css = new CSS(this);
 		this.setBounds(0, 0, WIDTH_DEFAULT, HEIGHT_DEFAULT);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
@@ -149,7 +152,7 @@ public class JStackUI extends JFrame {
 	 * 
 	 * @return the current panel
 	 */
-	public JPanel getPanel() {
+	public JPanel getCurrentPanel() {
 		return jcore.getCurrentPanel();
 	}
 
@@ -199,6 +202,10 @@ public class JStackUI extends JFrame {
 	public void restart() {
 		jcore.restart().setVisible(true);
 
+	}
+	
+	public void addCSS(String key, String value) {
+		css.add(key, value);
 	}
 
 }
