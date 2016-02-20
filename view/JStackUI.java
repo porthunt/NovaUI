@@ -1,7 +1,6 @@
 package jstackui.view;
 
 import java.awt.Color;
-import java.util.EmptyStackException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -145,10 +144,22 @@ public class JStackUI extends JFrame {
 		jcore.show();
 	}
 
+	/**
+	 * Gets the current panel on the stack.
+	 * 
+	 * @return the current panel
+	 */
 	public JPanel getPanel() {
 		return jcore.getCurrentPanel();
 	}
 
+	/**
+	 * Pushes the <b>panel</b> into the stack and changes the panel of the frame
+	 * to this new one.
+	 * 
+	 * @param panel
+	 *            the panel you want to move to
+	 */
 	public void next(JPanel panel) {
 		jcore.getCurrentPanel().setVisible(false);
 		panel.setVisible(true);
@@ -156,6 +167,10 @@ public class JStackUI extends JFrame {
 		this.add(panel);
 	}
 
+	/**
+	 * Goes back on the stack and shows the previous panel
+	 * 
+	 */
 	public void back() {
 		jcore.getCurrentPanel().setVisible(false);
 		JPanel panel = jcore.back();
@@ -163,6 +178,12 @@ public class JStackUI extends JFrame {
 		this.add(panel);
 	}
 
+	/**
+	 * Goes back on the stack and shows the nth previous panel
+	 * 
+	 * @param n
+	 *            the number of panels you want to go back
+	 */
 	public void back(int n) {
 		if (n > 0) {
 			jcore.getCurrentPanel().setVisible(false);
@@ -172,6 +193,9 @@ public class JStackUI extends JFrame {
 		}
 	}
 
+	/**
+	 * Goes back on the stack to the first panel of the stack.
+	 */
 	public void restart() {
 		jcore.restart().setVisible(true);
 

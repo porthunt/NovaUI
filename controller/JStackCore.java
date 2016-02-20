@@ -1,10 +1,8 @@
 package jstackui.controller;
 
-import java.util.EmptyStackException;
-
 import javax.swing.JPanel;
 
-import jstackui.exceptions.UndefinedPanelException;
+import jstackui.view.JStackUI;
 
 /**
  * This class consists exclusively to create an interface between JStackUI (the
@@ -74,28 +72,30 @@ public class JStackCore {
 	 * If n is bigger than the stack size, it removes everything but the first
 	 * inserted panel.
 	 * 
-	 * @param n number of elements to be popped of the stack.
+	 * @param n
+	 *            number of elements to be popped of the stack.
 	 */
 	public JPanel back(int n) {
 
-		if (n > uiStack.size()) {
+		if (n >= uiStack.size()) {
 			n = uiStack.size() - 1;
 		}
 
-		for (int i = 0; i < n-1; i++) {
+		for (int i = 0; i < n - 1; i++) {
 			this.back();
 		}
-		
+
 		return this.back();
 
 	}
 
 	/**
 	 * Removes every panel of the stack, but leaves the first inserted.
+	 * 
 	 * @return
 	 */
 	public JPanel restart() {
-		return uiStack.removeAllFromStack();
+		return this.back(uiStack.size());
 	}
 
 }
