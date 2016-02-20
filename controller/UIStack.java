@@ -17,8 +17,8 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class UIStack extends Stack<JPanel> {
-
-	Stack<JPanel> stck;
+	
+	JPanel current;
 
 	/**
 	 * Creates a stack of JPanels.
@@ -36,8 +36,40 @@ public class UIStack extends Stack<JPanel> {
 		Iterator<JPanel> iterator = this.iterator();
 
 		while (iterator.hasNext()) {
-			System.out.println(iterator.next().getName());
+			JPanel next = iterator.next();
+			if(next != current) {
+				System.out.println(next.getName());
+			} else {
+				System.out.println(next.getName()+" <");
+			}
 		}
+		
+		System.out.println("-END-\n");
+	}
+	
+	protected void addToStack(JPanel panel) {
+		this.push(panel);
+		current = panel;
+	}
+	
+	protected JPanel removeFromStack() {
+		JPanel panel =  this.pop();
+		current = this.peek();
+		return panel;
+	}
+	
+	protected JPanel removeAllFromStack() {
+		
+		for(int i=0; i <= this.size(); i++) {
+			this.pop();
+		}
+		
+		current = this.peek();
+		return current;
+	}
+	
+	protected JPanel getLastElement() {
+		return this.peek();
 	}
 
 }

@@ -1,5 +1,8 @@
 package jstackui.view;
 
+import java.awt.Color;
+import java.util.EmptyStackException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -11,7 +14,7 @@ import jstackui.exceptions.UndefinedPanelException;
  * with the user, giving the possibility to use as a default frame of a project.
  * The JStackCore deals with the stack, therefore this class is the interface
  * with the programmer.
- *
+ * 
  * @author porthunt
  * @see JStackCore
  * @since 0.1
@@ -28,7 +31,7 @@ public class JStackUI extends JFrame {
 	/**
 	 * Creates a frame and an empty JPanel as the first item of the UIStack
 	 * stack.
-	 *
+	 * 
 	 */
 	public JStackUI() {
 
@@ -41,7 +44,7 @@ public class JStackUI extends JFrame {
 	/**
 	 * Creates a frame and an empty JPanel as the first item of the UIStack
 	 * stack.
-	 *
+	 * 
 	 * @param title
 	 *            the title of your frame.
 	 */
@@ -57,22 +60,26 @@ public class JStackUI extends JFrame {
 	/**
 	 * Creates a frame and uses the panel parameter as the first item of the
 	 * UIStack stack.
-	 *
+	 * 
 	 * @param panel
 	 *            the first item of the UIStack stack.
 	 */
-	public JStackUI(JPanel panel) {
+	public JStackUI(JPanel panel) throws UndefinedPanelException {
 
-		defineCorePanel(panel);
-		initialize();
-		this.setVisible(true);
+		if (panel != null) {
+			defineCorePanel(panel);
+			initialize();
+			this.setVisible(true);
+		} else {
+			throw new UndefinedPanelException();
+		}
 
 	}
 
 	/**
 	 * Creates a frame and uses the panel parameter as the first item of the
 	 * UIStack stack.
-	 *
+	 * 
 	 * @param panel
 	 *            the first item of the UIStack stack cannot be NULL.
 	 * @param title
@@ -107,25 +114,26 @@ public class JStackUI extends JFrame {
 
 	/**
 	 * Creates a panel to be used as the first item on the stack.
-	 *
+	 * 
 	 * @return the new panel created.
 	 */
 
 	private JPanel createCorePanel() {
 		JPanel panel = new JPanel();
+		panel.setName("CorePanel");
+		panel.setBackground(Color.black);
 		return panel;
 	}
 
 	/**
 	 * Defines a panel as the first panel of the JStackUI frame.
-	 *
+	 * 
 	 * @param panel
 	 *            panel to be used as the first one.
 	 */
 
 	private void defineCorePanel(JPanel panel) {
 		corePanel = panel;
-		corePanel.setName("CorePanel");
 		panel.setBounds(0, 0, WIDTH_DEFAULT, HEIGHT_DEFAULT);
 		this.add(panel);
 	}
@@ -136,5 +144,37 @@ public class JStackUI extends JFrame {
 	public void showList() {
 		jcore.show();
 	}
-	
+
+	public JPanel getPanel() {
+		return jcore.getCurrentPanel();
+	}
+
+	public void next(JPanel panel) {
+		jcore.getCurrentPanel().setVisible(false);
+		panel.setVisible(true);
+		jcore.addPanel(panel);
+		this.add(panel);
+	}
+
+	public void back() {
+		jcore.getCurrentPanel().setVisible(false);
+		JPanel panel = jcore.back();
+		panel.setVisible(true);
+		this.add(panel);
+	}
+
+	public void back(int n) {
+		if (n > 0) {
+			jcore.getCurrentPanel().setVisible(false);
+			JPanel panel = jcore.back(n);
+			panel.setVisible(true);
+			this.add(panel);
+		}
+	}
+
+	public void restart() {
+		jcore.restart().setVisible(true);
+
+	}
+
 }
