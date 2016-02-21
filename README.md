@@ -1,18 +1,28 @@
-![alt tag](https://s3-us-west-2.amazonaws.com/jstackui/novaui_logo.png "NovaUI logo with a stack of squares on the left.")
+![alt tag](https://s3-us-west-2.amazonaws.com/jstackui/novaui_logo.png "NovaUI logo. It is written Nova follow by a square with a UI written inside.")
 ###### (under development)
 
-NovaUI is a Java library to control the flow of your screens. It uses Java Swing objects to create the software interface.
+NovaUI is a new way to work with Java Swing. Although FX is available since Java 8, a lot of companies still use Swing, and a lot of people still don't know how to work with its substitute. Thinking about that we came up with an idea: reformulate Java Swing. Using NovaUI, you can manipulate components using CSS, change them easily on your frame using next() and back() methods and add already created components like search boxes or login panels. NovaUI will save you from a headache.
 
 #### How does it work? 
 
-NovaUI makes it easy to integrate your panels. Instead of mapping how they connect, use a JStackUI object to create a frame that hosts all your panels. You can move forward or backwards between your panels using simples methods like next() or back().
+NovaUI have Swing components of its own, like JNovaUI or JNovaPanel. Using these kind of components, you can easily insert CSS using the addCSS() method. Look at the example below to see how easy it is!
 
 ######Keep it simples:
 
 ```
-JStackUI js = new JStackUI(); 
-js.next(new JPanel());
-js.back();
+JNovaUI jnova = new JNovaUI(); 
+jnova.addCSS("width", "500px");
+
+JNovaPanel jnovaPanel = newJNovaPanel();
+jnovaPanel.addCSS("background-color", "rgb(236,236,236)");
+
+jnova.next(jnovaPanel);
 ```
 
 ![alt tag](https://s3-us-west-2.amazonaws.com/jstackui/next.gif "Cursor clicking on arrow and the panel changes from 1 through 5.")
+
+######Available CSS properties:
++ width
++ background-color
+
+More properties are going to be added soon.
