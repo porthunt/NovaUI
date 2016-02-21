@@ -21,7 +21,7 @@ import jstackui.model.CSS;
  */
 
 @SuppressWarnings("serial")
-public class JStackUI extends JFrame {
+public class JNovaUI extends JFrame {
 
 	private JPanel corePanel;
 	private JStackCore jcore;
@@ -34,7 +34,7 @@ public class JStackUI extends JFrame {
 	 * stack.
 	 * 
 	 */
-	public JStackUI() {
+	public JNovaUI() {
 
 		defineCorePanel(createCorePanel());
 		initialize();
@@ -49,7 +49,7 @@ public class JStackUI extends JFrame {
 	 * @param title
 	 *            the title of your frame.
 	 */
-	public JStackUI(String title) {
+	public JNovaUI(String title) {
 
 		this.setTitle(title);
 		defineCorePanel(createCorePanel());
@@ -65,7 +65,7 @@ public class JStackUI extends JFrame {
 	 * @param panel
 	 *            the first item of the UIStack stack.
 	 */
-	public JStackUI(JPanel panel) throws UndefinedPanelException {
+	public JNovaUI(JPanel panel) throws UndefinedPanelException {
 
 		if (panel != null) {
 			defineCorePanel(panel);
@@ -87,7 +87,7 @@ public class JStackUI extends JFrame {
 	 *            the title of your frame.
 	 */
 
-	public JStackUI(JPanel panel, String title) throws UndefinedPanelException {
+	public JNovaUI(JPanel panel, String title) throws UndefinedPanelException {
 
 		if (panel != null) {
 			this.setTitle(title);

@@ -2,14 +2,14 @@ package jstackui.controller;
 
 import javax.swing.JPanel;
 
-import jstackui.view.JStackUI;
+import jstackui.view.JNovaUI;
 
 /**
  * This class consists exclusively to create an interface between JStackUI (the
  * frame) and UIStack (stack of panels).
  * 
  * @author porthunt
- * @see JStackUI
+ * @see JNovaUI
  * @see UIStack
  * @since 0.1
  */

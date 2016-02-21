@@ -1,13 +1,13 @@
 package jstackui.exceptions;
 
-import jstackui.view.JStackUI;
+import jstackui.view.JNovaUI;
 
 /**
  * This exception was created to avoid a null inserted on the stack. If the user
  * tries to use a null as the panel, this exception is raised.
  * 
  * @author porthunt
- * @see JStackUI
+ * @see JNovaUI
  * @since 0.1
  */
 
