@@ -4,17 +4,17 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.lang.reflect.Field;
+import java.util.HashMap;
 
 /**
- * This class allows the user to insert CSS properties
- * into a swing component. You can set a width to your frame,
- * change the color of a label or put margin/padding into your panel.
- * Although this class allows the use of CSS, not all properties are available.
+ * This class allows the user to insert CSS properties into a swing component.
+ * You can set a width to your frame, change the color of a label or put
+ * margin/padding into your panel. Although this class allows the use of CSS,
+ * not all properties are available.
  * 
  * Available properties:
  * 
- * 	- background-color
- * 	- width
+ * - background-color - width
  * 
  * @author porthunt
  * @since 0.2
@@ -22,31 +22,36 @@ import java.lang.reflect.Field;
 public class CSS {
 
 	private Component component;
+	private HashMap<String, String> properties;
 
 	public CSS(Component component) {
 		this.component = component;
+		properties = new HashMap<String, String>();
 	}
-	
+
 	/**
 	 * Adds a CSS property to a component.
 	 * 
-	 * e.g.:
-	 * 		key = background-color
-	 * 		value = yellow
+	 * e.g.: key = background-color value = yellow
 	 * 
-	 * @param key the property you want to change
-	 * @param value the value for that property
+	 * @param key
+	 *            the property you want to change
+	 * @param value
+	 *            the value for that property
 	 */
 	public void add(String key, String value) {
-
 		switch (key) {
 
 		case "background-color":
-			addBackgroundColor(value);
+			if (addBackgroundColor(value)) {
+				properties.put(key, value);
+			}
 			break;
 
 		case "width":
-			addWidth(value);
+			if (addWidth(value)) {
+				properties.put(key, value);
+			}
 			break;
 		}
 
@@ -56,9 +61,10 @@ public class CSS {
 	 * Adds a background-color to a component. The value can be given in rgb,
 	 * hexadecimal, percentage, name.
 	 * 
-	 * @param value The value of your color (rgb, hex, name or percentage).
+	 * @param value
+	 *            The value of your color (rgb, hex, name or percentage).
 	 */
-	public void addBackgroundColor(String value) {
+	public boolean addBackgroundColor(String value) {
 		if (value.contains("rgb")) {
 			String rgb = value.substring(value.indexOf("(") + 1, value.indexOf(")"));
 			Integer red = Integer.parseInt(rgb.split(",")[0].trim());
@@ -66,16 +72,18 @@ public class CSS {
 			Integer blue = Integer.parseInt(rgb.split(",")[2].trim());
 
 			component.setBackground(new Color(red, green, blue));
+			return true;
 		}
 
 		else if (value.contains("#")) {
 			component.setBackground(Color.decode(value));
+			return true;
 		}
 
-		/* Creates a Color.value element
+		/*
+		 * Creates a Color.value element
 		 * 
-		 *	value = "yellow" > Color.yellow
-		 *	value = "blue" > Color.blue
+		 * value = "yellow" > Color.yellow value = "blue" > Color.blue
 		 *
 		 * so on and so forth
 		 */
@@ -85,19 +93,23 @@ public class CSS {
 				Field field = Class.forName("java.awt.Color").getField(value);
 				color = (Color) field.get(null);
 				component.setBackground(color);
+				return true;
 			} catch (Exception e) {
 				color = Color.BLACK;
+				return false;
 			}
 
 		}
 	}
-	
+
 	/**
-	 * Adjusts the width of your component.The value can be given in pixels or percentage.
-	 *  
-	 * @param value the value of your width (px or percentage).
+	 * Adjusts the width of your component.The value can be given in pixels or
+	 * percentage.
+	 * 
+	 * @param value
+	 *            the value of your width (px or percentage).
 	 */
-	public void addWidth(String value) {
+	public boolean addWidth(String value) {
 		Integer width = 0;
 		if (value.contains("px")) {
 			width = Integer.parseInt(value.substring(0, value.indexOf("px")));
@@ -109,6 +121,11 @@ public class CSS {
 
 		if (width > 0) {
 			component.setBounds(0, 0, width, component.getHeight());
-		}
+			return true;
+		} else return false;
+	}
+	
+	public HashMap<String, String> getProperties() {
+		return properties;
 	}
 }

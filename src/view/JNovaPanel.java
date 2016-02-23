@@ -1,5 +1,7 @@
 package view;
 
+import java.util.HashMap;
+
 import javax.swing.JPanel;
 
 import model.CSS;
@@ -26,6 +28,10 @@ public class JNovaPanel extends JPanel {
 	
 	public void addCSS(String key, String value) {
 		css.add(key, value);
+	}
+	
+	public HashMap<String, String> getCSS() {
+		return css.getProperties();
 	}
 
 }

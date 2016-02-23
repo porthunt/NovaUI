@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -206,6 +207,10 @@ public class JNovaUI extends JFrame {
 	
 	public void addCSS(String key, String value) {
 		css.add(key, value);
+	}
+	
+	public HashMap<String, String> getCSS() {
+		return css.getProperties();
 	}
 
 }
