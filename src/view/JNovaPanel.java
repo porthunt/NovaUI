@@ -1,9 +1,10 @@
-package jstackui.view;
+package view;
 
 import javax.swing.JPanel;
 
-import jstackui.model.CSS;
+import model.CSS;
 
+@SuppressWarnings("serial")
 public class JNovaPanel extends JPanel {
 	
 	private CSS css;

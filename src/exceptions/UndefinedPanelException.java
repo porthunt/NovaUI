@@ -1,6 +1,6 @@
-package jstackui.exceptions;
+package exceptions;
 
-import jstackui.view.JNovaUI;
+import view.JNovaUI;
 
 /**
  * This exception was created to avoid a null inserted on the stack. If the user

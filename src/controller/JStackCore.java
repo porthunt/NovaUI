@@ -1,8 +1,8 @@
-package jstackui.controller;
+package controller;
 
 import javax.swing.JPanel;
 
-import jstackui.view.JNovaUI;
+import view.JNovaUI;
 
 /**
  * This class consists exclusively to create an interface between JStackUI (the

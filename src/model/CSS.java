@@ -1,4 +1,4 @@
-package jstackui.model;
+package model;
 
 import java.awt.Color;
 import java.awt.Component;

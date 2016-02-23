@@ -1,13 +1,13 @@
-package jstackui.view;
+package view;
 
 import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import jstackui.controller.JStackCore;
-import jstackui.exceptions.UndefinedPanelException;
-import jstackui.model.CSS;
+import controller.JStackCore;
+import exceptions.UndefinedPanelException;
+import model.CSS;
 
 /**
  * This class is the main class of the library. It is responsible to interact
