@@ -9,7 +9,7 @@ NovaUI have Swing components of its own, like JNovaUI or JNovaPanel. Using these
 
 ######Keep it simples:
 
-```
+```java
 JNovaUI jnova = new JNovaUI(); 
 jnova.addCSS("width", "500px");
 
