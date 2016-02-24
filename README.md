@@ -1,5 +1,5 @@
 ![alt tag](https://s3-us-west-2.amazonaws.com/jstackui/novaui_logo.png "NovaUI logo. It is written Nova follow by a square with a UI written inside.")
-###### (under development)
+###### master branch is stable, but pre-alpha. We do not encourage you to use it yet. Using dev branch to commit new features.
 
 NovaUI is a new way to work with Java Swing. Although FX is available since Java 8, a lot of companies still use Swing, and a lot of people still don't know how to work with its substitute. Thinking about that we came up with an idea: reformulate Java Swing. Using NovaUI, you can manipulate components using CSS, change them easily on your frame using next() and back() methods and add already created components like search boxes or login panels. NovaUI will save you from a headache.
 
