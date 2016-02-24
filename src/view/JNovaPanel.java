@@ -2,8 +2,10 @@ package view;
 
 import java.util.HashMap;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import exceptions.CSSNotValidException;
 import model.CSS;
 
 @SuppressWarnings("serial")
@@ -26,7 +28,9 @@ public class JNovaPanel extends JPanel {
 		this.name = name;
 	}
 	
-	public void addCSS(String key, String value) {
+	
+	
+	public void addCSS(String key, String value) throws CSSNotValidException {
 		css.add(key, value);
 	}
 	

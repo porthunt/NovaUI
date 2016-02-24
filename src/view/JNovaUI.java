@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.JStackCore;
+import exceptions.CSSNotValidException;
 import exceptions.UndefinedPanelException;
 import model.CSS;
 
@@ -205,7 +206,7 @@ public class JNovaUI extends JFrame {
 
 	}
 	
-	public void addCSS(String key, String value) {
+	public void addCSS(String key, String value) throws CSSNotValidException {
 		css.add(key, value);
 	}
 	
