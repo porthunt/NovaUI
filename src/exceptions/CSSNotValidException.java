@@ -3,12 +3,12 @@ package exceptions;
 import view.JNovaUI;
 
 /**
- * This exception was created to avoid a null inserted on the stack. If the user
- * tries to use a null as the panel, this exception is raised.
+ * This exception is raised when the user tries to
+ * use an invalid CSS property on a component.
  * 
  * @author porthunt
- * @see JNovaUI
- * @since 0.1
+ * @see CSS
+ * @since 0.2
  */
 
 @SuppressWarnings("serial")
