@@ -17,7 +17,10 @@ import exceptions.CSSNotValidException;
  * 
  * Available properties:
  * 
- * - background-color - width
+ * - background-color
+ * - width
+ * - height
+ * - font-size
  * 
  * @author porthunt
  * @since 0.2
@@ -41,8 +44,7 @@ public class CSS {
 	 *            the property you want to change
 	 * @param value
 	 *            the value for that property
-	 * @throws CSSNotValidException
-	 *             not a valid value for your CSS property
+	 * @throws CSSNotValidException raised when the CSS property value is not valid
 	 */
 	public void add(String key, String value) throws CSSNotValidException {
 		switch (key) {
@@ -89,7 +91,7 @@ public class CSS {
 	 * 
 	 * @param value
 	 *            The value of your color (rgb, hex, name or percentage).
-	 * @throws CSSNotValidException
+	 * @throws CSSNotValidException raised when the CSS property value is not valid
 	 */
 	public boolean addBackgroundColor(String value) throws CSSNotValidException {
 		try {
@@ -136,7 +138,7 @@ public class CSS {
 	 * 
 	 * @param value
 	 *            the value of your width (px or percentage).
-	 * @throws CSSNotValidException
+	 * @throws CSSNotValidException raised when the CSS property value is not valid
 	 */
 	public boolean addWidth(String value) throws CSSNotValidException {
 		Integer width = 0;
@@ -165,7 +167,7 @@ public class CSS {
 	 * 
 	 * @param value
 	 *            the value of your height (px or percentage).
-	 * @throws CSSNotValidException
+	 * @throws CSSNotValidException raised when the CSS property value is not valid
 	 */
 	public boolean addHeight(String value) throws CSSNotValidException {
 		Integer height = 0;
@@ -187,6 +189,14 @@ public class CSS {
 			throw new CSSNotValidException(value);
 		}
 	}
+	
+	/**
+	 * Adjusts the font size of a component (px, small, x-small, xx-small, large, x-large, xx-large, medium, initial).
+	 * 
+	 * @param value
+	 *            the value of your font size
+	 * @throws CSSNotValidException raised when the CSS property value is not valid
+	 */
 
 	public boolean addFontSize(String value) throws CSSNotValidException {
 		Integer fontSize = component.getFont().getSize();
@@ -226,7 +236,7 @@ public class CSS {
 
 	}
 
-	public int countChars(String word, char letter) {
+	private int countChars(String word, char letter) {
 		int counter = 0;
 		for (int i = 0; i < word.length(); i++) {
 			if (word.charAt(i) == letter) {
