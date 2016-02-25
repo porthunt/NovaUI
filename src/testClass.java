@@ -1,5 +1,7 @@
 
 
+import java.awt.Cursor;
+
 import com.sun.xml.internal.ws.util.StringUtils;
 
 import exceptions.CSSNotValidException;
@@ -14,19 +16,15 @@ public class testClass {
 		JNovaPanel panel = new JNovaPanel("Panel 1");
 		panel.setLayout(null);
 		try {
-			panel.addCSS("background-color", "rgb(a)");
+			panel.addCSS("background-color", "rgb(22,22,22)");
+			panel.addCSS("border-color", "red green blue");
 		} catch (CSSNotValidException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		final JNovaUI js = new JNovaUI(panel);
-		try {
-			js.addCSS("width", "rgb%");
-		} catch (CSSNotValidException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 		
 //		final JNovaPanel panel2 = new JNovaPanel("Panel 2");
