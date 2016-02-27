@@ -1,6 +1,6 @@
 package exceptions;
 
-import view.JNovaUI;
+import model.CSS;
 
 /**
  * This exception is raised when the user tries to

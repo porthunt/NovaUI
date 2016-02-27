@@ -3,7 +3,7 @@ package controller;
 import java.util.Iterator;
 import java.util.Stack;
 
-import javax.swing.JPanel;
+import view.JNovaPanel;
 
 /**
  * This class consists of a stack to push your panels when you want to move
@@ -16,9 +16,9 @@ import javax.swing.JPanel;
  */
 
 @SuppressWarnings("serial")
-public class UIStack extends Stack<JPanel> {
+public class UIStack extends Stack<JNovaPanel> {
 
-	JPanel current;
+	JNovaPanel current;
 
 	/**
 	 * Creates a stack of JPanels.
@@ -33,10 +33,10 @@ public class UIStack extends Stack<JPanel> {
 	 */
 
 	protected void show() {
-		Iterator<JPanel> iterator = this.iterator();
+		Iterator<JNovaPanel> iterator = this.iterator();
 
 		while (iterator.hasNext()) {
-			JPanel next = iterator.next();
+			JNovaPanel next = iterator.next();
 			if (next != current) {
 				System.out.println(next.getName());
 			} else {
@@ -53,7 +53,7 @@ public class UIStack extends Stack<JPanel> {
 	 * @param panel
 	 *            the panel to be added on the stack.
 	 */
-	protected void addToStack(JPanel panel) {
+	protected void addToStack(JNovaPanel panel) {
 		this.push(panel);
 		current = panel;
 	}
@@ -63,8 +63,8 @@ public class UIStack extends Stack<JPanel> {
 	 * 
 	 * @return the popped element
 	 */
-	protected JPanel removeFromStack() {
-		JPanel panel = this.pop();
+	protected JNovaPanel removeFromStack() {
+		JNovaPanel panel = this.pop();
 		current = this.peek();
 		return panel;
 	}
@@ -74,7 +74,7 @@ public class UIStack extends Stack<JPanel> {
 	 * 
 	 * @return the last element of the stack
 	 */
-	protected JPanel getLastElement() {
+	protected JNovaPanel getLastElement() {
 		return this.peek();
 	}
 

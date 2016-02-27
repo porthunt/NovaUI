@@ -1,10 +1,8 @@
 package view;
 
-import java.awt.Color;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import controller.JStackCore;
 import exceptions.CSSNotValidException;
@@ -25,14 +23,14 @@ import model.CSS;
 @SuppressWarnings("serial")
 public class JNovaUI extends JFrame {
 
-	private JPanel corePanel;
+	private JNovaPanel corePanel;
 	private JStackCore jcore;
 	private CSS css;
 	public int WIDTH_DEFAULT = 900;
 	public int HEIGHT_DEFAULT = 600;
 
 	/**
-	 * Creates a frame and an empty JPanel as the first item of the UIStack
+	 * Creates a frame and an empty JNovaPanel as the first item of the UIStack
 	 * stack.
 	 * 
 	 */
@@ -40,12 +38,11 @@ public class JNovaUI extends JFrame {
 
 		defineCorePanel(createCorePanel());
 		initialize();
-		this.setVisible(true);
 
 	}
 
 	/**
-	 * Creates a frame and an empty JPanel as the first item of the UIStack
+	 * Creates a frame and an empty JNovaPanel as the first item of the UIStack
 	 * stack.
 	 * 
 	 * @param title
@@ -56,7 +53,6 @@ public class JNovaUI extends JFrame {
 		this.setTitle(title);
 		defineCorePanel(createCorePanel());
 		initialize();
-		this.setVisible(true);
 
 	}
 
@@ -67,12 +63,11 @@ public class JNovaUI extends JFrame {
 	 * @param panel
 	 *            the first item of the UIStack stack.
 	 */
-	public JNovaUI(JPanel panel) throws UndefinedPanelException {
+	public JNovaUI(JNovaPanel panel) throws UndefinedPanelException {
 
 		if (panel != null) {
 			defineCorePanel(panel);
 			initialize();
-			this.setVisible(true);
 		} else {
 			throw new UndefinedPanelException();
 		}
@@ -89,13 +84,12 @@ public class JNovaUI extends JFrame {
 	 *            the title of your frame.
 	 */
 
-	public JNovaUI(JPanel panel, String title) throws UndefinedPanelException {
+	public JNovaUI(JNovaPanel panel, String title) throws UndefinedPanelException {
 
 		if (panel != null) {
 			this.setTitle(title);
 			defineCorePanel(panel);
 			initialize();
-			this.setVisible(true);
 		} else {
 			throw new UndefinedPanelException();
 		}
@@ -113,7 +107,6 @@ public class JNovaUI extends JFrame {
 		css = new CSS(this);
 		this.setBounds(0, 0, WIDTH_DEFAULT, HEIGHT_DEFAULT);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
 	}
 
 	/**
@@ -122,10 +115,8 @@ public class JNovaUI extends JFrame {
 	 * @return the new panel created.
 	 */
 
-	private JPanel createCorePanel() {
-		JPanel panel = new JPanel();
-		panel.setName("CorePanel");
-		panel.setBackground(Color.black);
+	private JNovaPanel createCorePanel() {
+		JNovaPanel panel = new JNovaPanel("Core");
 		return panel;
 	}
 
@@ -136,7 +127,7 @@ public class JNovaUI extends JFrame {
 	 *            panel to be used as the first one.
 	 */
 
-	private void defineCorePanel(JPanel panel) {
+	private void defineCorePanel(JNovaPanel panel) {
 		corePanel = panel;
 		panel.setBounds(0, 0, WIDTH_DEFAULT, HEIGHT_DEFAULT);
 		this.add(panel);
@@ -154,7 +145,7 @@ public class JNovaUI extends JFrame {
 	 * 
 	 * @return the current panel
 	 */
-	public JPanel getCurrentPanel() {
+	public JNovaPanel getCurrentPanel() {
 		return jcore.getCurrentPanel();
 	}
 
@@ -165,7 +156,7 @@ public class JNovaUI extends JFrame {
 	 * @param panel
 	 *            the panel you want to move to
 	 */
-	public void next(JPanel panel) {
+	public void next(JNovaPanel panel) {
 		jcore.getCurrentPanel().setVisible(false);
 		panel.setVisible(true);
 		jcore.addPanel(panel);
@@ -178,7 +169,7 @@ public class JNovaUI extends JFrame {
 	 */
 	public void back() {
 		jcore.getCurrentPanel().setVisible(false);
-		JPanel panel = jcore.back();
+		JNovaPanel panel = jcore.back();
 		panel.setVisible(true);
 		this.add(panel);
 	}
@@ -192,7 +183,7 @@ public class JNovaUI extends JFrame {
 	public void back(int n) {
 		if (n > 0) {
 			jcore.getCurrentPanel().setVisible(false);
-			JPanel panel = jcore.back(n);
+			JNovaPanel panel = jcore.back(n);
 			panel.setVisible(true);
 			this.add(panel);
 		}
@@ -205,11 +196,11 @@ public class JNovaUI extends JFrame {
 		jcore.restart().setVisible(true);
 
 	}
-	
+
 	public void addCSS(String key, String value) throws CSSNotValidException {
 		css.add(key, value);
 	}
-	
+
 	public HashMap<String, String> getCSS() {
 		return css.getProperties();
 	}
