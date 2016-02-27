@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 import javax.swing.border.CompoundBorder;
 
 import exceptions.CSSNotValidException;
@@ -295,14 +295,14 @@ public class CSS {
 			String[] borderColors = value.split(" ");
 
 			if (borderColors.length == 1) {
-				((JPanel) component).setBorder(BorderFactory.createLineBorder(findColor(borderColors[0]))); // adds
+				((JComponent) component).setBorder(BorderFactory.createLineBorder(findColor(borderColors[0]))); // adds
 																											// first
 																											// color
 																											// on
 																											// all
 																											// sides
 			} else if (borderColors.length == 2) {
-				((JPanel) component).setBorder(
+				((JComponent) component).setBorder(
 						new CompoundBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, findColor(borderColors[0])), // adds
 																													// first
 																													// color
@@ -314,7 +314,7 @@ public class CSS {
 																											// on
 																											// left/right
 			} else if (borderColors.length == 3) {
-				((JPanel) component).setBorder(new CompoundBorder(
+				((JComponent) component).setBorder(new CompoundBorder(
 						new CompoundBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, findColor(borderColors[0])), // adds
 																													// first
 																													// color
@@ -336,7 +336,7 @@ public class CSS {
 																											// on
 																											// left
 			} else if (borderColors.length == 4) {
-				((JPanel) component).setBorder(new CompoundBorder(
+				((JComponent) component).setBorder(new CompoundBorder(
 						new CompoundBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, findColor(borderColors[0])), // adds
 																													// first
 																													// color
@@ -364,7 +364,7 @@ public class CSS {
 			throw new CSSNotValidException(value);
 		}
 	}
-
+	
 	/**
 	 * Returns a Color object given an rgb, hex or name color.
 	 * 
