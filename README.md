@@ -7,7 +7,7 @@ NovaUI is a new way to work with Java Swing. Although FX is available since Java
 
 NovaUI have Swing components of its own, like JNovaUI or JNovaPanel. Using these kind of components, you can easily insert CSS using the addCSS() method. Look at the example below to see how easy it is!
 
-######Keep it simples:
+###### Keep it simples:
 
 ```java
 JNovaUI jnova = new JNovaUI(); 
@@ -21,7 +21,7 @@ jnova.next(jnovaPanel);
 
 ![alt tag](https://s3-us-west-2.amazonaws.com/jstackui/next.gif "Cursor clicking on arrow and the panel changes from 1 through 5.")
 
-######Available CSS properties:
+###### Available CSS properties:
 + width
 + background-color
 
