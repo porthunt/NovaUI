@@ -1,7 +1,6 @@
 package controller;
 
-import javax.swing.JPanel;
-
+import view.JNovaPanel;
 import view.JNovaUI;
 
 /**
@@ -26,9 +25,9 @@ public class JStackCore {
 	 *            the panel to push as the first item on your stack.
 	 */
 
-	public JStackCore(JPanel panel) {
+	public JStackCore(JNovaPanel panel) {
 		uiStack = new UIStack();
-		uiStack.push(panel);
+		uiStack.addToStack(panel);
 	}
 
 	/**
@@ -45,7 +44,7 @@ public class JStackCore {
 	 * @param panel
 	 *            the panel to be pushed to the stack.
 	 */
-	public void addPanel(JPanel panel) {
+	public void addPanel(JNovaPanel panel) {
 		uiStack.addToStack(panel);
 	}
 
@@ -54,7 +53,7 @@ public class JStackCore {
 	 * 
 	 * @return the current panel
 	 */
-	public JPanel getCurrentPanel() {
+	public JNovaPanel getCurrentPanel() {
 		return uiStack.getLastElement();
 	}
 
@@ -62,7 +61,7 @@ public class JStackCore {
 	 * Removes the last item from the stack. Uses the next panel as the panel
 	 * frame.
 	 */
-	public JPanel back() {
+	public JNovaPanel back() {
 		uiStack.removeFromStack();
 		return uiStack.getLastElement();
 	}
@@ -75,7 +74,7 @@ public class JStackCore {
 	 * @param n
 	 *            number of elements to be popped of the stack.
 	 */
-	public JPanel back(int n) {
+	public JNovaPanel back(int n) {
 
 		if (n >= uiStack.size()) {
 			n = uiStack.size() - 1;
@@ -94,7 +93,7 @@ public class JStackCore {
 	 * 
 	 * @return
 	 */
-	public JPanel restart() {
+	public JNovaPanel restart() {
 		return this.back(uiStack.size());
 	}
 
